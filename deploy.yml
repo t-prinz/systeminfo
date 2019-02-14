@@ -1,0 +1,16 @@
+---
+- name: Ensure application and dependencies are installed
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Ensure net-tools is installed
+      package:
+        name: net-tools
+        state: present
+
+    - name: Ensure application is installed
+      copy:
+        src: systeminfo.py
+        dest: /var/www/cgi-bin
+        mode: 0755
