@@ -133,46 +133,46 @@ def main():
 
     # Populate the table
 
-#    netinfo = subprocess.check_output(["ifconfig", "-a"])
-    netinfo = subprocess.run(["ifconfig", "-a"])
+##    netinfo = subprocess.check_output(["ifconfig", "-a"])
+#    netinfo = subprocess.run(["ifconfig", "-a"])
 
-    interface=""
-    ipv4=""
-    for ilist in netinfo.split("\n"):
+#    interface=""
+#    ipv4=""
+#    for ilist in netinfo.split("\n"):
 
-      # Find the location of the first non-white-space character.  If there is
-      # only white-space, skip the line.
+#      # Find the location of the first non-white-space character.  If there is
+#      # only white-space, skip the line.
 
-      blockcheck = re.search("\S", ilist)
-      if blockcheck is None:
-        continue
+#      blockcheck = re.search("\S", ilist)
+#      if blockcheck is None:
+#        continue
 
-      # If the first non-white-space character is in position 0, it is the
-      # start of a line and represents a new interface.  Otherwise, it provides
-      # information for that interface.
+#      # If the first non-white-space character is in position 0, it is the
+#      # start of a line and represents a new interface.  Otherwise, it provides
+#      # information for that interface.
 
-      if blockcheck.start() == 0:
-        if DEBUG:
-          print("start of a new block: {}".format(ilist) )
+#      if blockcheck.start() == 0:
+#        if DEBUG:
+#          print("start of a new block: {}".format(ilist) )
 
-        interface = ilist[0:ilist.find(":")]
-      else:
-        details = ilist.split()
-        if details[0] == "inet":
-          ipv4 = details[1]
+#        interface = ilist[0:ilist.find(":")]
+#      else:
+#        details = ilist.split()
+#        if details[0] == "inet":
+#          ipv4 = details[1]
 
-      # Once both an interface and an inet value are found as a pair, write
-      # the information.
+#      # Once both an interface and an inet value are found as a pair, write
+#      # the information.
 
-      if interface != "" and ipv4 != "":
-        if DEBUG:
-          print(interface, ipv4)
-        fileo.write("  <tr>\n")
-        fileo.write("    <td>{}</td>\n".format(interface))
-        fileo.write("    <td>{}</td>\n".format(ipv4))
-        fileo.write("  </tr>\n")
-        interface = ""
-        ipv4 = ""
+#      if interface != "" and ipv4 != "":
+#        if DEBUG:
+#          print(interface, ipv4)
+#        fileo.write("  <tr>\n")
+#        fileo.write("    <td>{}</td>\n".format(interface))
+#        fileo.write("    <td>{}</td>\n".format(ipv4))
+#        fileo.write("  </tr>\n")
+#        interface = ""
+#        ipv4 = ""
 
     # Finish the table
 
