@@ -14,6 +14,7 @@ from argparse import ArgumentParser
 ########################################
 
 def pre_write(filed):
+  filed.write("Content-type:text/html\r\n\r\n")
   filed.write("<!DOCTYPE html>\n")
   filed.write("<html>\n")
 
