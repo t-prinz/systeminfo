@@ -14,46 +14,46 @@ from argparse import ArgumentParser
 ########################################
 
 def pre_write(filed):
-  print("Content-type:text/html\r\n\r\n")
-  print("<!DOCTYPE html>\n")
-  print("<html>\n")
+  filed.write("Content-type:text/html\r\n\r\n")
+  filed.write("<!DOCTYPE html>\n")
+  filed.write("<html>\n")
 
-  print("<head>\n")
+  filed.write("<head>\n")
 
-  print("<style>\n")
+  filed.write("<style>\n")
 
-#  print("body {\n")
-#  print("    background-color: powderblue;\n")
-#  print("}\n")
+#  filed.write("body {\n")
+#  filed.write("    background-color: powderblue;\n")
+#  filed.write("}\n")
 
-  print("table {\n")
-  print("    font-family: arial, sans-serif;\n")
-  print("    border-collapse: collapse;\n")
-  print("    width: 25%;\n")
-  print("}\n")
+  filed.write("table {\n")
+  filed.write("    font-family: arial, sans-serif;\n")
+  filed.write("    border-collapse: collapse;\n")
+  filed.write("    width: 25%;\n")
+  filed.write("}\n")
 
-  print("td, th {\n")
-  print("    border: 1px solid #dddddd;\n")
-  print("    text-align: left;\n")
-  print("    padding: 8px;\n")
-  print("}\n")
+  filed.write("td, th {\n")
+  filed.write("    border: 1px solid #dddddd;\n")
+  filed.write("    text-align: left;\n")
+  filed.write("    padding: 8px;\n")
+  filed.write("}\n")
 
-  print("tr:nth-child(even) {\n")
-  print("    background-color: #dddddd;\n")
-  print("}\n")
+  filed.write("tr:nth-child(even) {\n")
+  filed.write("    background-color: #dddddd;\n")
+  filed.write("}\n")
 
-  print("</style>\n")
+  filed.write("</style>\n")
 
-  print("</head>\n")
+  filed.write("</head>\n")
 
-  print("<body>\n")
+  filed.write("<body>\n")
 
 ########################################
 
 def post_write(filed):
-  print("</body>\n")
+  filed.write("</body>\n")
 
-  print("</html>\n")
+  filed.write("</html>\n")
 
 ########################################
 
@@ -92,44 +92,44 @@ def main():
 
     # Start a new table to show the basic system information
 
-    print("<h2>System Information\n</h2>")
+    fileo.write("<h2>System Information\n</h2>")
 
-    print("<table>\n")
-    print("  <tr>\n")
-    print("    <th>Parameter</th>\n")
-    print("    <th>Value</th>\n")
-    print("  </tr>\n")
+    fileo.write("<table>\n")
+    fileo.write("  <tr>\n")
+    fileo.write("    <th>Parameter</th>\n")
+    fileo.write("    <th>Value</th>\n")
+    fileo.write("  </tr>\n")
 
     # Populate the table
 
-    print("  <tr>\n")
-    print("    <td>Hostname</td>\n")
-    print("    <td>{}</td>\n".format( platform.node() ))
-    print("  </tr>\n")
+    fileo.write("  <tr>\n")
+    fileo.write("    <td>Hostname</td>\n")
+    fileo.write("    <td>{}</td>\n".format( platform.node() ))
+    fileo.write("  </tr>\n")
 
-    print("  <tr>\n")
-    print("    <td>System</td>\n")
-    print("    <td>{}</td>\n".format( platform.system() ))
-    print("  </tr>\n")
+    fileo.write("  <tr>\n")
+    fileo.write("    <td>System</td>\n")
+    fileo.write("    <td>{}</td>\n".format( platform.system() ))
+    fileo.write("  </tr>\n")
 
-    print("  <tr>\n")
-    print("    <td>Release</td>\n")
-    print("    <td>{}</td>\n".format( platform.release() ))
-    print("  </tr>\n")
+    fileo.write("  <tr>\n")
+    fileo.write("    <td>Release</td>\n")
+    fileo.write("    <td>{}</td>\n".format( platform.release() ))
+    fileo.write("  </tr>\n")
 
     # Finish the table
 
-    print("</table>\n")
+    fileo.write("</table>\n")
 
     # Start a new table to show the network interface information
 
-    print("<h2>Network Interface Information\n</h2>")
+    fileo.write("<h2>Network Interface Information\n</h2>")
 
-    print("<table>\n")
-    print("  <tr>\n")
-    print("    <th>Interface</th>\n")
-    print("    <th>IPv4 Address</th>\n")
-    print("  </tr>\n")
+    fileo.write("<table>\n")
+    fileo.write("  <tr>\n")
+    fileo.write("    <th>Interface</th>\n")
+    fileo.write("    <th>IPv4 Address</th>\n")
+    fileo.write("  </tr>\n")
 
     # Populate the table
 
@@ -167,16 +167,16 @@ def main():
 #      if interface != "" and ipv4 != "":
 #        if DEBUG:
 #          print(interface, ipv4)
-#        print("  <tr>\n")
-#        print("    <td>{}</td>\n".format(interface))
-#        print("    <td>{}</td>\n".format(ipv4))
-#        print("  </tr>\n")
+#        fileo.write("  <tr>\n")
+#        fileo.write("    <td>{}</td>\n".format(interface))
+#        fileo.write("    <td>{}</td>\n".format(ipv4))
+#        fileo.write("  </tr>\n")
 #        interface = ""
 #        ipv4 = ""
 
     # Finish the table
 
-    print("</table>\n")
+    fileo.write("</table>\n")
 
     # Write out the final part of the HTML file
 
