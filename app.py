@@ -133,7 +133,8 @@ def main():
 
     # Populate the table
 
-    netinfo = subprocess.check_output(["ifconfig", "-a"])
+#    netinfo = subprocess.check_output(["ifconfig", "-a"])
+    netinfo = subprocess.run(["ifconfig", "-a"])
 
     interface=""
     ipv4=""
