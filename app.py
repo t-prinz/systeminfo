@@ -165,7 +165,7 @@ def main():
 
       if interface != "" and ipv4 != "":
         if DEBUG:
-          print interface, ipv4
+          print(interface, ipv4)
         fileo.write("  <tr>\n")
         fileo.write("    <td>{}</td>\n".format(interface))
         fileo.write("    <td>{}</td>\n".format(ipv4))
